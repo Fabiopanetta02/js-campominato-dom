@@ -47,6 +47,10 @@ footer{
 /***************
 CLASSI ACTIVE JS
 ****************/
-.active-color{
+.correct-choice{
     background-color: cornflowerblue;
+}
+
+.error-choice{
+    background-color: red;
 }

@@ -21,7 +21,7 @@ Prepariamo "qualcosa" per tenere il punteggio dell'utente.
 Quando l'utente clicca su una cella, incrementiamo il punteggio.
 Se riusciamo, facciamo anche in modo da non poter più cliccare la stessa cella.
 
-# MILESTONE 2
+//# MILESTONE 2
 Facciamo in modo di generare 16 numeri casuali (tutti diversi) compresi tra 1 e il massimo di caselle disponibili.
 Generiamoli e stampiamo in console per essere certi che siano corretti
 
@@ -58,17 +58,10 @@ function createOption(){
     return option;
 }
 
-//CREAZIONE DI 16 NUMERI RANDOM
-//*Condizioni Iniziali*//
-let maxNumber = 16;
-const min = 1;
-const max = 100;
-
-for(let i = 0; i < maxNumber; i++){
-    const randomNumbers = Math.floor(Math.random() * (max - 1 + 1) ) + min;
-    console.log(randomNumbers);
+//CREAZIONE NUMERI RANDOM
+function createNumber(min, max){
+    return Math.floor(Math.random() * (max - 1 + 1) ) + min;
 }
-
 
 // !1- Recupero gli elementi con l'id
 const buttonPlay = document.getElementById('play');
@@ -76,13 +69,20 @@ const gridNumber = document.getElementById('grid');
 
 
 // !2- Mi preparo delle condizioni inziali
+//Grid
 const rows = 10;
 const cells = 10;
 const totalCells= rows * cells;
 
-const maxScore = 100;
+//Punteggio
+const maxScore = 84;
 let scoreNow = 0;
 
+//Numeri Random
+let maxNumber = 16;
+const min = 1;
+const max = 100;
+const randomNumber = [];
 
 // !3-Metto un addEventListener al bottone in modo tale che al click mi genera la griglia 
 buttonPlay.addEventListener('click', function(){
@@ -93,6 +93,14 @@ buttonPlay.addEventListener('click', function(){
     //Svuola la griglia da eventuali contenuti
     gridNumber.innerHTML = '';
     
+    //Creo 16 numeri random
+    for(let i = 0; i < maxNumber; i++){
+        const random = createNumber(min, max);
+        randomNumber.push(random);
+     }
+
+     console.log(randomNumber);
+
     // !Creo le celle per 100 volte e le metto in pagina
     for (let i = 1; i <= totalCells; i++){
 
@@ -104,16 +112,23 @@ buttonPlay.addEventListener('click', function(){
         newCell.addEventListener('click', function () {
 
             //Impedisco di cliccare la stessa cella
-            if(newCell.classList.contains('active-color')){
+            if(newCell.classList.contains('correct-choice' || 'error-choice')){
                 return;  
               }
               
-            //Coloro la cella selezionata
-            newCell.classList.add('active-color');
+            //Controllo se la cella selezionata è un bomba oppure no, e coloro la cella
+            const numberCell  = parseInt(newCell.innerText);
+            if (numberCell === randomNumber){
+                newCell.classList.add('error-choice');
+                console.log('GAME OVER');
+            }
+            else if (numberCell != randomNumber){
+                newCell.classList.add('correct-choice');
+            }
+            
 
             //Creo la costante che mi tiene d'occhio il punteggio e incrementa ad ogni click
             scoreNow++;
-            console.log(`Il tuo punteggio attuale é: ${scoreNow}`);
         })
 
         //Aggancio la cella alla griglia
