@@ -124,7 +124,6 @@ buttonPlay.addEventListener('click', function(){
 
                     //Creo la costante che mi tiene d'occhio il punteggio e incrementa ad ogni click
                     scoreNow++;
-                    console.log(scoreNow);
 
                     if(scoreNow == maxScore){
                         alert(`HAI VINTO, hai totalizzato un punteggio di ${scoreNow} punti`)
