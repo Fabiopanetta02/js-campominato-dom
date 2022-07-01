@@ -52,12 +52,6 @@ function createCell(content){
     return cell;
 }
 
-//CREAZIONE DELLA OPTION NELLA SELECT
-function createOption(){
-    const option = document.createElement('option');
-    return option;
-}
-
 //CREAZIONE NUMERI RANDOM
 function createNumber(min, max){
     return Math.floor(Math.random() * (max - 1 + 1) ) + min;
@@ -84,6 +78,15 @@ const min = 1;
 const max = 100;
 const randomNumber = [];
 
+//Creo 16 numeri random
+for(let i = 0; i < maxNumber; i++){
+    const random = createNumber(min, max);
+    randomNumber.push(random);
+ }
+
+ console.log(randomNumber);
+
+
 // !3-Metto un addEventListener al bottone in modo tale che al click mi genera la griglia 
 buttonPlay.addEventListener('click', function(){
 
@@ -92,14 +95,6 @@ buttonPlay.addEventListener('click', function(){
 
     //Svuola la griglia da eventuali contenuti
     gridNumber.innerHTML = '';
-    
-    //Creo 16 numeri random
-    for(let i = 0; i < maxNumber; i++){
-        const random = createNumber(min, max);
-        randomNumber.push(random);
-     }
-
-     console.log(randomNumber);
 
     // !Creo le celle per 100 volte e le metto in pagina
     for (let i = 1; i <= totalCells; i++){
@@ -117,18 +112,24 @@ buttonPlay.addEventListener('click', function(){
               }
               
             //Controllo se la cella selezionata è un bomba oppure no, e coloro la cella
-            const numberCell  = parseInt(newCell.innerText);
-            if (numberCell === randomNumber){
-                newCell.classList.add('error-choice');
-                console.log('GAME OVER');
-            }
-            else if (numberCell != randomNumber){
-                newCell.classList.add('correct-choice');
-            }
-            
+            const numberCell = parseInt(newCell.innerText);
+            console.log(numberCell);
 
-            //Creo la costante che mi tiene d'occhio il punteggio e incrementa ad ogni click
-            scoreNow++;
+            for (let j = 0; j < randomNumber.length; j++){
+                let fleg = false
+                if (numberCell === randomNumber[j]){
+                    fleg = true;
+                    newCell.classList.add('error-choice')
+                    console.log('GAME OVER');
+                }
+
+                else{
+                    newCell.classList.add('correct-choice');
+
+                    //Creo la costante che mi tiene d'occhio il punteggio e incrementa ad ogni click
+                    scoreNow++;
+                }
+            }  
         })
 
         //Aggancio la cella alla griglia
