@@ -27,7 +27,8 @@ Generiamoli e stampiamo in console per essere certi che siano corretti
 
 # MILESTONE 3
 Quando l'utente clicca su una cella, verifichiamo se ha calpestato una bomba, controllando se il numero di cella è presente nell'array di bombe. 
-Se si, la cella diventa rossa (raccogliamo il punteggio e e scriviamo in console che la partita termina) altrimenti diventa azzurra e dobbiamo incrementare il punteggio.
+Se si, la cella diventa rossa (raccogliamo il punteggio e e scriviamo in console che la partita termina) altrimenti diventa azzurra e 
+dobbiamo incrementare il punteggio.
 
 # MILESTONE 4
 Quando l'utente clicca su una cella, e questa non è una bomba, 
@@ -57,6 +58,16 @@ function createOption(){
     return option;
 }
 
+/*//CREAZIONE DI 16 NUMERI RANDOM
+let maxNumber = 16;
+const min = 1;
+const max = 100;
+for(let i = 0; i < maxNumber; i++){
+    const randomNumbers = Math.floor(Math.random() * (max - 1 + 1) ) + min;
+    console.log(randomNumbers)
+}*/
+
+
 // !1- Recupero gli elementi con l'id
 const buttonPlay = document.getElementById('play');
 const gridNumber = document.getElementById('grid');
@@ -66,6 +77,10 @@ const gridNumber = document.getElementById('grid');
 const rows = 10;
 const cells = 10;
 const totalCells= rows * cells;
+
+const maxScore = 100;
+let scoreNow = 0;
+
 
 // !3-Metto un addEventListener al bottone in modo tale che al click mi genera la griglia 
 buttonPlay.addEventListener('click', function(){
@@ -83,11 +98,20 @@ buttonPlay.addEventListener('click', function(){
         const newCell = createCell(i);
 
         /*-Creo la logica per cui quando clicco sulla cella si colora,  
-        e mi esce in console il numero della cella che ho cliccato*/
-        newCell.addEventListener('click', function(){
-            console.log('Hai cliccato la cella numero: ' + newCell.innerText)
+        e mi tiene d'occhio il punteggio*/
+        newCell.addEventListener('click', function () {
 
-            newCell.classList.toggle('active-color');
+            //Impedisco di cliccare la stessa cella
+            if(newCell.classList.contains('active-color')){
+                return;  
+              }
+              
+            //Coloro la cella selezionata
+            newCell.classList.add('active-color');
+
+            //Creo la costante che mi tiene d'occhio il punteggio e incrementa ad ogni click
+            scoreNow++;
+            console.log(scoreNow);
         })
 
         //Aggancio la cella alla griglia
