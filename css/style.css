@@ -1,0 +1,52 @@
+ :root{
+    --verde-acqua: #7FFFD4;
+} 
+
+
+/* Generic */
+body{
+ overflow-y: hidden;
+}
+
+main{
+    background-color: var(--verde-acqua);
+}
+
+footer{
+    line-height: 70px;
+}
+
+
+/************
+    UTILS  
+*************/
+#grid{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin: 0 auto;
+    width: 1160px;
+    height: 1160px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#grid .cell{
+    cursor: pointer;
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 2px solid black;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+}
+
+
+/***************
+CLASSI ACTIVE JS
+****************/
+.active-color{
+    background-color: cornflowerblue;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Fabio Panetta">
+    <meta name="description" content="">
+    <link rel="icon" href="img/Logo.png">
+    <!-- FONT -->
+    <!-- STYLE BOOTSTRAP-->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
+        crossorigin="anonymous"
+    >
+    <!-- STYLE ICONE BOOTSTRAP-->
+    <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    >
+    <!-- STYLE -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Campo Minato Grid</title>
+</head>
+<body>
+    <header>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg bg-white">
+            <div class="container-fluid">
+                <div class="d-flex align-center">  
+                    <img src="img/Logo.png" alt="Logo" class="img-fluid me-2">
+                    <h1 class="navbar-brand fs-2 fw-bold" href="#">Campo Minato</h1>
+                </div>
+                <div class="d-flex">
+                    <span class="me-1">Difficoltà:</span>
+                    <select name="" id="level-select" class="me-1">
+                        <option value="easy">Facile</option>
+                        <option value="medium">Medio</option>
+                        <option value="Hard">Difficile</option>
+                    </select>
+                  <button class="btn btn-secondary py-0" type="submit" id="play">Play</button>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <main>
+        <!-- GRIGLIA -->
+        <div class="container">
+            <div id="grid">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container-fluid">
+            <div>
+                Made with &hearts; by <a href="">Boolean</a>
+            </div>
+        </div>  
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
