@@ -30,7 +30,7 @@ Quando l'utente clicca su una cella, verifichiamo se ha calpestato una bomba, co
 Se si, la cella diventa rossa (raccogliamo il punteggio e e scriviamo in console che la partita termina) altrimenti diventa azzurra e 
 dobbiamo incrementare il punteggio.
 
-# MILESTONE 4
+//# MILESTONE 4
 Quando l'utente clicca su una cella, e questa non è una bomba, 
 dobbiamo controllare se il punteggio incrementato ha raggiunto il punteggio massimo perchè in quel caso la partita termina. 
 Raccogliamo quindi il messaggio è scriviamo un messaggio appropriato.
@@ -115,17 +115,20 @@ buttonPlay.addEventListener('click', function(){
             const numberCell = parseInt(newCell.innerText);
 
                 if (randomNumber.includes(numberCell)){
-                    newCell.classList.add('error-choice')
-                    console.log('GAME OVER');
+                    newCell.classList.add('error-choice');
+                    alert(`HAI PERSO, hai totalizzato un punteggio di ${scoreNow} punti`);
+                    return;
                 }
                 else{
                     newCell.classList.add('correct-choice');
 
                     //Creo la costante che mi tiene d'occhio il punteggio e incrementa ad ogni click
                     scoreNow++;
+                    console.log(scoreNow);
 
                     if(scoreNow == maxScore){
-                        console.log('WINNER')
+                        alert(`HAI VINTO, hai totalizzato un punteggio di ${scoreNow} punti`)
+                        return;
                     }  
                 } 
         })
