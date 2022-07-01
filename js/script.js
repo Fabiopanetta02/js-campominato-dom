@@ -16,7 +16,7 @@ quando raggiunge il numero massimo possibile di numeri consentiti (ovvero quando
 
 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
 
-# MILESTONE 1
+//# MILESTONE 1
 Prepariamo "qualcosa" per tenere il punteggio dell'utente.
 Quando l'utente clicca su una cella, incrementiamo il punteggio.
 Se riusciamo, facciamo anche in modo da non poter più cliccare la stessa cella.
@@ -58,14 +58,16 @@ function createOption(){
     return option;
 }
 
-/*//CREAZIONE DI 16 NUMERI RANDOM
+//CREAZIONE DI 16 NUMERI RANDOM
+//*Condizioni Iniziali*//
 let maxNumber = 16;
 const min = 1;
 const max = 100;
+
 for(let i = 0; i < maxNumber; i++){
     const randomNumbers = Math.floor(Math.random() * (max - 1 + 1) ) + min;
-    console.log(randomNumbers)
-}*/
+    console.log(randomNumbers);
+}
 
 
 // !1- Recupero gli elementi con l'id
@@ -111,7 +113,7 @@ buttonPlay.addEventListener('click', function(){
 
             //Creo la costante che mi tiene d'occhio il punteggio e incrementa ad ogni click
             scoreNow++;
-            console.log(scoreNow);
+            console.log(`Il tuo punteggio attuale é: ${scoreNow}`);
         })
 
         //Aggancio la cella alla griglia
