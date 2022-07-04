@@ -68,15 +68,15 @@ const rows = 10;
 const cells = 10;
 const totalCells= rows * cells;
 
-//Punteggio
-const maxScore = 84;
-let scoreNow = 0;
-
 //Numeri Random
 let maxNumber = 16;
 const min = 1;
 const max = 100;
 const randomNumber = [];
+
+//Punteggio
+const maxScore = totalCells - maxNumber ;
+let scoreNow = 0;
 
 //Creo 16 numeri random
 for(let i = 0; i < maxNumber; i++){
